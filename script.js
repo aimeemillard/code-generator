@@ -88,45 +88,70 @@ var upperCasedCharacters = [
   "Z",
 ];
 
-// Function to prompt user for password options
+// // Function to prompt user for password options
 function getPasswordOptions() {
   // Variable to store length of password from user input
-  var length = parseInt(
+  var passwordLength = parseInt(
     prompt("How many characters would you like your password to contain?")
   );
 
-  //Complete your function here...
+  // var charType = prompt(
+  //   "Enter a character type: special, numeric, uppercase, lowercase."
+  // );
 
   // Conditional statement to check if password length is a number. Prompts end if this evaluates false
-
+  if (passwordLength() == numericCharacters) {
+    return;
+  }
   // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
+  if (passwordLength() < 8) {
+    alert("Password length must be at least 8 characters.");
+    return;
+  }
+
+  // Object to store user input
+  var passwordOptions = {
+    length: length,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasNumericCharacters: hasNumericCharacters,
+    hasLowerCasedCharacters: hasLowerCasedCharacters,
+    hasUpperCasedCharacters: hasUpperCasedCharacters,
+  };
 
   // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
-
-  // Variable to store boolean regarding the inclusion of special, numeric , lowercase, uppercase characters
-
+  if (passwordLength > 128) {
+    alert("Password length must be less than 129 lowerCasedCharacters.");
+    return;
+  }
   // Conditional statement to check if user does not include any types of characters.
-
-  //Password generator should ends if all four variables evaluate to false
-
+  // if (passwordLength != specialCharacters) {
+  //   alert(".");
+  //   return;
+  // }
   return passwordOptions;
 }
 
+//Password generator should ends if all four variables evaluate to false
+
 // Function for getting a random element from an array
-//Complete your function here...
+function getRandom(passwordLength) {
+  var randIndex = Math.floor(Math.random() * passwordLength);
+  var ranElement = passwordLength[randIndex];
+
+  return randElement;
+}
 
 // Function to generate password with user input
 function generatePassword() {
-  var options = getPasswordOptions();
+  var options = generatePassword();
 
   var result = [];
-
-  //Complete your function here...
+  var possibleCharacters = [];
+  var guaranteedCharacters = [];
 }
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -137,3 +162,25 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// function generatePassword() {
+//   var charSet = "";
+//   if (charType.toLowerCase === "lowercase") {
+//     charSet = "abcdefghijklmnopqrstuvwxyz";
+//   } else if (charType.toLowerCase === "uppercase") {
+//     charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   } else if (charType.toLowerCase === "numeric") {
+//     charSet = "0123456789";
+//   } else if (charType.toLowerCase === "special") {
+//     charSet = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+//   }
+//   //return value
+//   var retVal = "";
+//   //for (var i = 0, n = charSet.length; i < length; i++) {
+//   for (var i = 0, n = length; i < length; i++) {
+//     //picks a character within charSet at index of random number
+//     retVal += charSet.charAt(Math.floor(Math.random() * n));
+//   }
+//   console.log(retVal);
+//   return retVal;
+// }
