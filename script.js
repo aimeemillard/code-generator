@@ -62,7 +62,7 @@ var upperCases = [
 ];
 
 // Array of special characters to be included in password
-var specialCharacters = [
+var special = [
   "@",
   "%",
   "+",
@@ -91,6 +91,7 @@ var specialCharacters = [
 // // Function to prompt user for password options
 function generatePasswordOptions() {
   // Variable to store length of password from user input
+
   var passwordLength = parseInt(
     prompt("How many characters would you like your password to contain?")
   );
@@ -101,14 +102,26 @@ function generatePasswordOptions() {
     );
   }
   var numbers = confirm("Do you want numbers in your password?");
+  if (numbers === false) {
+    writePassword;
+  }
 
   var lowerCases = confirm("Do you want lowercases in your password?");
+  if (lowerCases === false) {
+    writePassword;
+  }
 
   var upperCases = confirm("Do you want uppercases in your password?");
+  if (upperCases) {
+    writePassword;
+  }
 
   var specialCharacters = confirm(
     "Do you want special characters in your password?"
   );
+  if (specialCharacters === false) {
+    writePassword;
+  }
 
   var minimumCount = 0;
   // Empty minimums for numbers, lowerCases, upperCases & specialCharacters
@@ -130,12 +143,6 @@ function generatePasswordOptions() {
     getUpperCases: function () {
       return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
     },
-
-    getSpecialCharacters: function () {
-      return specialCharacters[
-        Math.floor(Math.random() * specialCharacters.length)
-      ];
-    },
   };
 
   // Checks to make sure user selected ok for all and uses empty minimums from above
@@ -154,7 +161,7 @@ function generatePasswordOptions() {
     minimumCount++;
   }
 
-  if (specialCharacters === true) {
+  if (special === true) {
     minimumSpecialCharacters = functionArray.getSpecialCharacters();
     minimumCount++;
   }
@@ -204,8 +211,8 @@ function generatePasswordOptions() {
 // }
 
 // Add event listener to generate button
-// const specialCharacters = "!@#$%^&*()";
-const generateButton = document.getElementById("generate");
+const specialCharacters = "!@#$%^&*()";
+const generateButton = document.getElementById("generateBtn");
 generateButton.addEventListener("click", writePassword);
 
 // Get references to the #generate element
@@ -213,7 +220,6 @@ generateButton.addEventListener("click", writePassword);
 function writePassword() {
   var password = generatePasswordOptions();
   var passwordText = document.querySelector("#password");
-  // var generateBtn = document.querySelector("#generate");
 
   passwordText.value = password;
 }
