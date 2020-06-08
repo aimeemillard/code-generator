@@ -1,9 +1,9 @@
-# code-generator
+#  Generate a strong random password that provides security.
 
 Go Live! <a href="https://aimeemillard.github.io/code-generator/">Generate a Password</a>
 
-# User Instructions: Generate a strong random password that provides security.
 
+# User Instructions
 Click "Generate Password" button to begin.
 Answer prompt and select a length of at least 8 and no more than 128 characters.
 Choose between four character types; lowercase, uppercase, numbers and or special characters.
