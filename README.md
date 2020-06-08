@@ -18,8 +18,11 @@ Click "Generate Password" button again to create a new secure password with diff
 
 # Features
 User-selected
+
 Secure
+
 Functional
+
 Responsive
 
 
